@@ -54,32 +54,20 @@ impl Device {
     }
 
     pub fn push(&self, local: &str, remote: &str) -> Result<Output, Error> {
-        match Command::new("adb")
+        Command::new("adb")
             .args(["-s", &self.serial, "push", local, remote])
             .output()
-        {
-            Ok(output) => Ok(output),
-            Err(e) => Err(e),
-        }
     }
 
     pub fn pull(&self, remote: &str, local: &str) -> Result<Output, Error> {
-        match Command::new("adb")
+        Command::new("adb")
             .args(["-s", &self.serial, "pull", remote, local])
             .output()
-        {
-            Ok(output) => Ok(output),
-            Err(e) => Err(e),
-        }
     }
 
     pub fn shell_command(&self, command: &str) -> Result<Output, Error> {
-        match Command::new("adb")
+        Command::new("adb")
             .args(["-s", &self.serial, "shell", command])
             .output()
-        {
-            Ok(output) => Ok(output),
-            Err(e) => Err(e),
-        }
     }
 }
